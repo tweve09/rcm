@@ -1,14 +1,23 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import logo from "../public/assets/heart_pulse.svg";
+import logo from "../public/assets/logo.png";
 import doctor from "../public/assets/doctor.png";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleJoinUs = () => {
+    router.push("/register");
+  };
+
   return (
     <>
       <div className="min-h-screen bg-customBackground">
         <div className="container mx-auto">
-          <div className="flex justify-between items-center p-3">
+          <div className="flex justify-between items-center p-5">
             <div>
               <Image src={logo} alt="logo" width={60} height={60} />
             </div>
@@ -53,7 +62,10 @@ export default function Home() {
               </p>
 
               <div>
-                <button className="border-none w-[220px] rounded-md text-white bg-[#008894] text-2xl p-3 mt-8">
+                <button
+                  onClick={handleJoinUs}
+                  className="border-none w-[220px] rounded-md text-white bg-[#008894] text-2xl p-3 mt-8"
+                >
                   Join us
                 </button>
               </div>

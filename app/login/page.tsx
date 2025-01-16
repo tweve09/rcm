@@ -1,19 +1,17 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import white_logo from "../../public/assets/Logo_white.png";
-import register_image from "../../public/assets/register.png";
+import login_image from "../../public/assets/login.png";
 import google_icon from "../../public/assets/google_icon.svg";
 
-export default function Register() {
+export default function Login() {
   const router = useRouter();
 
-  const handleSignUp = () => {
+  const handleSignIn = () => {
     router.push("/dashboard");
   };
-
   return (
     <>
       <div className="min-h-screen flex bg-customBackground">
@@ -23,16 +21,16 @@ export default function Register() {
           </div>
           <div className="mt-20">
             <Image
-              src={register_image}
+              src={login_image}
               alt="register"
+              className="mx-auto transform scale-125"
               width={500}
-              height={539}
-              className="mx-auto"
+              height={600}
             />
           </div>
-          <div className="mt-12">
+          <div className="mt-20">
             <h1 className="text-white text-center text-2xl font-semibold">
-              Heart care, Heart trust
+              Caring for your Patients’ heart, one beat at a time.
             </h1>
           </div>
         </div>
@@ -40,27 +38,20 @@ export default function Register() {
           <div className="ml-52">
             <div className="mt-32">
               <p className="text-2xl font-semibold text-customText">
-                Already have an account?{" "}
+                Are you new?
                 <a
-                  href="/login"
-                  className="text-secondBackground hover:text-[#06c3d4] transition"
+                  href="/register"
+                  className="text-secondBackground hover:text-[#06c3d4] transition p-1"
                 >
-                  Sign in
+                  Create account.
                 </a>
               </p>
               <h1 className="text-customText font-bold text-6xl mt-10">
-                Join Us!
+                Welcome back!
               </h1>
             </div>
             <div className="mt-12">
               <form action="">
-                <div className="mb-8">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="bg-customBackground w-[450px] outline-none placeholder:text-gray-400 placeholder:text-2xl p-3 border-gray-300 border-2 rounded-md focus:border-gray-400 focus:border-3"
-                  />
-                </div>
                 <div className="mb-8">
                   <input
                     type="email"
@@ -76,18 +67,19 @@ export default function Register() {
                   />
                 </div>
                 <div className="mb-8">
-                  <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="bg-customBackground w-[450px] outline-none placeholder:text-gray-400 placeholder:text-2xl p-3 border-gray-300 border-2 rounded-md focus:border-gray-400 focus:border-3"
-                  />
+                  <a
+                    href="/forgotpassword"
+                    className="text-secondBackground text-2xl hover:text-[#06c3d4] transition font-semibold"
+                  >
+                    Forgot password?
+                  </a>
                 </div>
                 <button
+                  onClick={handleSignIn}
                   type="button"
                   className="text-2xl border-none bg-secondBackground text-white hover:bg-[#06c3d4] w-[450px] p-3 transition rounded-md"
-                  onClick={handleSignUp}
                 >
-                  Sign up
+                  Sign in
                 </button>
               </form>
               <button className="flex justify-center items-center mt-8 border-2 border-gray-300 w-[450px] p-3 rounded-md hover:border-3 hover:border-gray-400 transition">
