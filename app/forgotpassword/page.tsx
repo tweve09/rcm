@@ -25,8 +25,8 @@ export default function ForgotPassword() {
             Reset password
           </h1>
           <p className="text-customText w-[60%] text-2xl mx-auto text-center mt-10">
-            Just enter the email address you registered with and we’ll send you
-            a link to reset your password.
+            Just enter the email address you registered with and we&apos;ll send
+            you a link to reset your password.
           </p>
 
           <form action="" method="post" className="mt-10 text-center">

@@ -53,7 +53,7 @@ export default function Home() {
           <div className="flex">
             <div className="basis-1/2">
               <h1 className="font-extrabold text-customText text-6xl mt-48 mb-16">
-                Expertly interpreting your patients' heartbeats
+                Expertly interpreting your patients&apos; heartbeats
               </h1>
               <p className="text-[#2C3D68BD] text-2xl mb-24">
                 We understand that interpreting ECG readings can be a complex
