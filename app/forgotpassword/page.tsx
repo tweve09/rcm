@@ -1,14 +1,30 @@
+"use client";
+
 import Image from "next/image";
 
+import { useRouter } from "next/navigation";
 import white_logo from "../../public/assets/Logo_white.png";
 import security from "../../public/assets/security.png";
 export default function ForgotPassword() {
+  const router = useRouter();
+
+  const handleHome = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <div className="min-h-screen flex">
         <div className="basis-1/2 bg-secondBackground">
           <div className="ml-10 mt-10">
-            <Image src={white_logo} alt="logo" width={60} height={60} />
+            <Image
+              className="cursor-pointer"
+              src={white_logo}
+              alt="logo"
+              width={60}
+              height={60}
+              onClick={handleHome}
+            />
           </div>
           <div className="mt-20">
             <Image

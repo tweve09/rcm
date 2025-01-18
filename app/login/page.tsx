@@ -12,12 +12,24 @@ export default function Login() {
   const handleSignIn = () => {
     router.push("/dashboard");
   };
+
+  const handleHome = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <div className="min-h-screen flex bg-customBackground">
         <div className="basis-1/2 bg-secondBackground">
           <div className="ml-10 mt-10">
-            <Image src={white_logo} alt="logo" width={60} height={60} />
+            <Image
+              className="cursor-pointer"
+              src={white_logo}
+              alt="logo"
+              width={60}
+              height={60}
+              onClick={handleHome}
+            />
           </div>
           <div className="mt-20">
             <Image

@@ -13,13 +13,24 @@ export default function Home() {
     router.push("/register");
   };
 
+  const handleHome = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <div className="min-h-screen bg-customBackground">
         <div className="container mx-auto">
           <div className="flex justify-between items-center p-5">
             <div>
-              <Image src={logo} alt="logo" width={60} height={60} />
+              <Image
+                className="cursor-pointer"
+                src={logo}
+                alt="logo"
+                width={60}
+                height={60}
+                onClick={handleHome}
+              />
             </div>
             <div className="flex">
               <a
