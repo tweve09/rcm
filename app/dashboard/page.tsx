@@ -46,7 +46,7 @@ export default function Dashboard() {
                   height={60}
                   className="object-contain rounded-full"
                 />
-                <h1 className="text-2xl ml-6 text-customText font-semibold">
+                <h1 className="text-2xl ml-6 text-customText font-semibold cursor-pointer">
                   Dr. Emmanuel tweve
                 </h1>
                 <Image
@@ -75,7 +75,7 @@ export default function Dashboard() {
               <Image
                 src={ecg}
                 alt="ecg graph"
-                className="w-full h-[391.5px]object-contain"
+                className="w-full cursor-pointer"
               />
             </div>
             <div className="basis-1/3 border border-[#2C3D681A] rounded-md p-4">
@@ -130,7 +130,7 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center mb-3 p-3  hover:bg-customBackground hover:rounded-lg cursor-pointer">
                   <div>
                     <h1 className="text-2xl text-[#2C3D6880] font-semibold">
-                      Aisha Samwli
+                      Aisha Samweli
                     </h1>
                     <p className="text-[#2C3D6880] text-xl">
                       Since: 12 Jan 2022

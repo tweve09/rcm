@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import white_logo from "../../public/assets/Logo_white.png";
 import register_image from "../../public/assets/register.png";
@@ -52,12 +53,12 @@ export default function Register() {
             <div className="mt-32">
               <p className="text-2xl font-semibold text-customText">
                 Already have an account?{" "}
-                <a
+                <Link
                   href="/login"
                   className="text-secondBackground hover:text-[#06c3d4] transition"
                 >
                   Sign in
-                </a>
+                </Link>
               </p>
               <h1 className="text-customText font-bold text-6xl mt-10">
                 Join Us!

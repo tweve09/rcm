@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import white_logo from "../../public/assets/Logo_white.png";
 import login_image from "../../public/assets/login.png";
@@ -51,12 +52,12 @@ export default function Login() {
             <div className="mt-32">
               <p className="text-2xl font-semibold text-customText">
                 Are you new?
-                <a
+                <Link
                   href="/register"
                   className="text-secondBackground hover:text-[#06c3d4] transition p-1"
                 >
                   Create account.
-                </a>
+                </Link>
               </p>
               <h1 className="text-customText font-bold text-6xl mt-10">
                 Welcome back!
@@ -79,12 +80,12 @@ export default function Login() {
                   />
                 </div>
                 <div className="mb-8">
-                  <a
+                  <Link
                     href="/forgotpassword"
                     className="text-secondBackground text-2xl hover:text-[#06c3d4] transition font-semibold"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
                 <button
                   onClick={handleSignIn}

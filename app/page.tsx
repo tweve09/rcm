@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import logo from "../public/assets/logo.png";
 import doctor from "../public/assets/doctor.png";
@@ -33,30 +34,30 @@ export default function Home() {
               />
             </div>
             <div className="flex">
-              <a
+              <Link
                 href=""
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 Home
-              </a>
-              <a
+              </Link>
+              <Link
                 href=""
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 About us
-              </a>
-              <a
+              </Link>
+              <Link
                 href=""
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 Features
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/register"
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 Join us
-              </a>
+              </Link>
             </div>
           </div>
         </div>
