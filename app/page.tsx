@@ -41,13 +41,13 @@ export default function Home() {
                 Home
               </Link>
               <Link
-                href=""
+                href="/about-us"
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 About us
               </Link>
               <Link
-                href=""
+                href="/features"
                 className="mx-5 text-3xl font-semibold text-customText"
               >
                 Features

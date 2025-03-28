@@ -1,17 +1,38 @@
 "use client";
+
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { useState } from "react";
 
 import white_logo from "../../public/assets/Logo_white.png";
 import login_image from "../../public/assets/login.png";
 import google_icon from "../../public/assets/google_icon.svg";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
 
-  const handleSignIn = () => {
-    router.push("/dashboard");
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(email, password);
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    console.log(result);
+
+    if (result?.ok) {
+      router.push("/dashboard");
+    } else {
+      setMessage("Invalid credentials");
+    }
   };
 
   const handleHome = () => {
@@ -64,12 +85,21 @@ export default function Login() {
               </h1>
             </div>
             <div className="mt-12">
-              <form action="">
+              {message && (
+                <>
+                  <div className="text-xl text-red-600 p-3">{message}</div>
+                </>
+              )}
+              <form onSubmit={handleLogin}>
                 <div className="mb-8">
                   <input
                     type="email"
                     placeholder="Email"
                     className="bg-customBackground w-[450px] outline-none placeholder:text-gray-400 placeholder:text-2xl p-3 border-gray-300 border-2 rounded-md focus:border-gray-400 focus:border-3"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-8">
@@ -77,6 +107,10 @@ export default function Login() {
                     type="password"
                     placeholder="Password"
                     className="bg-customBackground w-[450px] outline-none placeholder:text-gray-400 placeholder:text-2xl p-3 border-gray-300 border-2 rounded-md focus:border-gray-400 focus:border-3"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-8">
@@ -88,8 +122,7 @@ export default function Login() {
                   </Link>
                 </div>
                 <button
-                  onClick={handleSignIn}
-                  type="button"
+                  type="submit"
                   className="text-2xl border-none bg-secondBackground text-white hover:bg-[#06c3d4] w-[450px] p-3 transition rounded-md"
                 >
                   Sign in
