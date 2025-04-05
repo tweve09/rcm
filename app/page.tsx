@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import logo from "../public/assets/logo.png";
 import doctor from "../public/assets/doctor.png";
+import Button from "@/components/UI/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -73,14 +74,12 @@ export default function Home() {
                 accurately diagnose and treat your patients
               </p>
 
-              <div>
-                <button
-                  onClick={handleJoinUs}
-                  className="border-none w-[220px] rounded-md text-white bg-[#008894] text-2xl p-3 mt-8"
-                >
-                  Join us
-                </button>
-              </div>
+              <Button
+                type="button"
+                onClick={handleJoinUs}
+                className="w-[220px] mt-8"
+                title="Join us"
+              />
             </div>
             <div className="basis-1/2 overflow-hidden">
               <Image

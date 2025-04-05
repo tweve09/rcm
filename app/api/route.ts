@@ -1,3 +1,9 @@
 export async function GET(req: Request, res: Response) {
-  return new Response("Hello world!");
+  const data = {
+    name: "Emmanuel Tweve",
+    proffesional: "Software Engineer",
+    location: "Mbeya, Tanzania",
+    age: "25",
+  };
+  return new Response(JSON.stringify(data));
 }
