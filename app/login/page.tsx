@@ -4,48 +4,48 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-
-import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import white_logo from "../../public/assets/Logo_white.png";
 import login_image from "../../public/assets/login.png";
-import google_icon from "../../public/assets/google_icon.svg";
-import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
 
-interface FormData {
-  email: string;
-  password: string;
-}
+const schema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(1, { message: "Password is required" }),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export default function Login() {
   const router = useRouter();
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
   });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-  };
 
   const handleHome = () => {
     router.push("/");
   };
 
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
-      <div className="min-h-screen flex bg-customBackground">
-        <div className="basis-1/2 bg-secondBackground">
-          <div className="ml-10 mt-10">
+      <div className="min-h-screen flex flex-col md:flex-row bg-customBackground">
+        {/* Left Column - Hidden on mobile */}
+        <div className="hidden md:flex md:basis-1/2 bg-secondBackground flex-col items-center">
+          <div className="w-full px-10 pt-5">
             <Image
-              className="cursor-pointer"
+              className="cursor-pointer hover:opacity-90 transition-opacity"
               src={white_logo}
               alt="logo"
               width={60}
@@ -53,69 +53,94 @@ export default function Login() {
               onClick={handleHome}
             />
           </div>
-          <div className="mt-20">
-            <Image
-              src={login_image}
-              alt="register"
-              className="mx-auto transform scale-125"
-              width={500}
-              height={600}
-            />
-          </div>
-          <div className="mt-20">
-            <h1 className="text-white text-center text-2xl font-semibold">
-              Caring for your Patients’ heart, one beat at a time.
+
+          <div className="flex-1 flex flex-col justify-center items-center px-10">
+            <div className="mb-8 w-full max-w-[500px]">
+              <Image
+                src={login_image}
+                alt="register"
+                className="mx-auto"
+                width={500}
+                height={600}
+                priority
+              />
+            </div>
+
+            <h1 className="text-white text-center text-2xl md:text-3xl font-semibold px-4">
+              Caring for your Patients' heart, one beat at a time.
             </h1>
           </div>
         </div>
-        <div className="basis-1/2">
-          <div className="ml-52">
-            <div className="mt-32">
-              <p className="text-2xl font-semibold text-customText">
-                Are you new?
+
+        {/* Right Column - Always visible */}
+        <div className="w-full md:basis-1/2 p-4 md:p-8 lg:p-12">
+          <div className="max-w-md mx-auto md:ml-12 lg:ml-16 xl:ml-24">
+            <div className="mt-8 md:mt-12 lg:mt-24">
+              <p className="text-xl md:text-2xl text-customText">
+                Are you new?{" "}
                 <Link
                   href="/register"
-                  className="text-secondBackground hover:text-[#06c3d4] transition p-1"
+                  className="text-secondBackground hover:text-[#06c3d4] transition-colors duration-200 font-semibold"
                 >
                   Create account.
                 </Link>
               </p>
-              <h1 className="text-customText font-bold text-6xl mt-10">
+
+              <h1 className="text-customText font-bold text-3xl md:text-4xl lg:text-5xl mt-6 md:mt-8">
                 Welcome back!
               </h1>
             </div>
-            <div className="mt-12">
-              <form onSubmit={handleLogin}>
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-                <div className="mb-8">
+
+            <div className="mt-8 md:mt-12">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div>
+                  <input
+                    type="email"
+                    {...register("email", { required: true })}
+                    placeholder="Email"
+                    className="w-full outline-none border-2 border-gray-300 rounded-lg px-4 py-3 focus:border-secondBackground transition-all duration-200 placeholder:text-gray-400 hover:border-gray-400 shadow-sm"
+                  />
+                  {errors.email && (
+                    <span className="text-sm text-red-500 font-medium">
+                      This field is required
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <input
+                    type="password"
+                    {...register("password", { required: true })}
+                    placeholder="Password"
+                    className="w-full outline-none border-2 border-gray-300 rounded-lg px-4 py-3 focus:border-secondBackground transition-all duration-200 placeholder:text-gray-400 hover:border-gray-400 shadow-sm"
+                  />
+                  {errors.password && (
+                    <span className="text-sm text-red-500 font-medium">
+                      This field is required
+                    </span>
+                  )}
+                </div>
+
+                <div className="text-right">
                   <Link
                     href="/forgotpassword"
-                    className="text-secondBackground text-2xl hover:text-[#06c3d4] transition font-semibold"
+                    className="text-secondBackground hover:text-[#06c3d4] transition-colors duration-200 text-lg font-medium"
                   >
                     Forgot password?
                   </Link>
                 </div>
-                <Button type="submit" className="w-[450px]" title="Sign in" />
+
+                <Button type="submit" className="w-full" title="Sign in" />
               </form>
-              <button className="flex justify-center items-center mt-8 border-2 border-gray-300 w-[450px] p-3 rounded-md hover:border-3 hover:border-gray-400 transition">
-                <FcGoogle className="h-8 w-8" />
-                <span className="text-2xl text-secondBackground hover:text-[#06c3d4] font-semibold pl-6">
-                  Sign in with Google
-                </span>
-              </button>
+
+              <div className="mt-6">
+                <button className="flex items-center justify-center w-full gap-4 p-3 border-2 border-gray-300 rounded-md hover:border-gray-400 transition-colors duration-200">
+                  <FcGoogle className="h-6 w-6" />
+                  <span className="text-lg text-secondBackground font-medium">
+                    Sign in with Google
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

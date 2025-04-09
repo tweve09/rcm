@@ -14,53 +14,66 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <div className="min-h-screen flex">
-        <div className="basis-1/2 bg-secondBackground">
-          <div className="ml-10 mt-10">
+      <div className="min-h-screen flex flex-col lg:flex-row">
+        {/* Left Column - Image Section */}
+        <div className="hidden lg:flex lg:basis-1/2 bg-secondBackground flex-col">
+          <div className="px-8 pt-8 xl:px-12 xl:pt-12">
             <Image
-              className="cursor-pointer"
+              className="cursor-pointer hover:opacity-90 transition-opacity"
               src={white_logo}
               alt="logo"
               width={60}
               height={60}
               onClick={handleHome}
+              priority
             />
           </div>
-          <div className="mt-20">
-            <Image
-              src={security}
-              alt="register"
-              className="mx-auto"
-              width={550}
-              height={600}
-            />
-          </div>
-        </div>
-        <div className="basis-1/2 bg-customBackground">
-          <h1 className="text-customText font-bold text-5xl text-center mt-48">
-            Reset password
-          </h1>
-          <p className="text-customText w-[60%] text-2xl mx-auto text-center mt-10">
-            Just enter the email address you registered with and we&apos;ll send
-            you a link to reset your password.
-          </p>
 
-          <form action="" method="post" className="mt-10 text-center">
-            <div className="mb-8">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="bg-white w-[450px] outline-none placeholder:text-gray-400 placeholder:text-2xl p-3 border-gray-300 border-2 rounded-md focus:border-gray-400 focus:border-3"
+          <div className="flex-1 flex items-center justify-center p-4">
+            <div className="max-w-[550px] w-full">
+              <Image
+                src={security}
+                alt="Security illustration"
+                className="mx-auto"
+                width={550}
+                height={600}
+                priority
               />
             </div>
-            <button
-              type="submit"
-              className="text-2xl border-none bg-secondBackground text-white hover:bg-[#06c3d4] w-[450px] p-3 transition rounded-md"
-            >
-              Send Link
-            </button>
-          </form>
+          </div>
+        </div>
+
+        {/* Right Column - Reset Form */}
+        <div className="w-full lg:basis-1/2 bg-customBackground flex flex-col items-center justify-center py-12 px-6 sm:px-8 md:px-12">
+          <div className="w-full max-w-[450px]">
+            <h1 className="text-customText font-bold text-3xl sm:text-4xl md:text-5xl text-center">
+              Reset password
+            </h1>
+
+            <p className="text-customText text-lg sm:text-xl md:text-2xl text-center mt-6 sm:mt-8">
+              Just enter the email address you registered with and we'll send
+              you a link to reset your password.
+            </p>
+
+            <form className="mt-8 sm:mt-10 w-full">
+              <div className="mb-6 sm:mb-8">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="w-full bg-white outline-none placeholder:text-gray-400 placeholder:text-lg sm:placeholder:text-xl p-3 border-2 border-gray-300 rounded-md focus:border-secondBackground transition-all"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full text-lg sm:text-xl md:text-2xl border-none bg-secondBackground text-white hover:bg-[#06c3d4] p-3 transition-colors duration-200 rounded-md shadow-sm hover:shadow-md"
+              >
+                Send Link
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </>
