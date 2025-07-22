@@ -35,6 +35,7 @@ export default function Register() {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
+    router.push("/dashboard");
   };
 
   const handleHome = () => {

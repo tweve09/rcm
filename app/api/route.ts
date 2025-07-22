@@ -1,9 +1,11 @@
-export async function GET(req: Request, res: Response) {
+import { NextRequest, NextResponse } from "next/server";
+
+export async function GET(request: NextRequest) {
   const data = {
     name: "Emmanuel Tweve",
     proffesional: "Software Engineer",
     location: "Mbeya, Tanzania",
     age: "25",
   };
-  return new Response(JSON.stringify(data));
+  return new NextResponse(JSON.stringify(data));
 }

@@ -35,7 +35,8 @@ export default function Login() {
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+    console.log("Form submitted:", data);
+    router.push("/dashboard");
   };
 
   return (
@@ -67,7 +68,7 @@ export default function Login() {
             </div>
 
             <h1 className="text-white text-center text-2xl md:text-3xl font-semibold px-4">
-              Caring for your Patients' heart, one beat at a time.
+              Caring for your Patients&apos; heart, one beat at a time.
             </h1>
           </div>
         </div>

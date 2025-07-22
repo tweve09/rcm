@@ -51,8 +51,8 @@ export default function ForgotPassword() {
             </h1>
 
             <p className="text-customText text-lg sm:text-xl md:text-2xl text-center mt-6 sm:mt-8">
-              Just enter the email address you registered with and we'll send
-              you a link to reset your password.
+              Just enter the email address you registered with and we&apos;ll
+              send you a link to reset your password.
             </p>
 
             <form className="mt-8 sm:mt-10 w-full">

@@ -1,10 +1,4 @@
 "use client";
-
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
-import { signOut } from "next-auth/react";
-
 import Image from "next/image";
 
 import logo from "../../public/assets/logo.png";
@@ -13,13 +7,7 @@ import profile from "../../public/assets/profile.jpg";
 import bell from "../../public/assets/bell.svg";
 import ecg from "../../public/assets/ecg.png";
 import file from "../../public/assets/file.svg";
-export default async function Dashboard() {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect("/login");
-  }
-
+export default function Dashboard() {
   return (
     <>
       <div>
@@ -60,7 +48,7 @@ export default async function Dashboard() {
                   className="object-contain rounded-full"
                 />
                 <h1 className="text-2xl ml-6 text-customText font-semibold cursor-pointer">
-                  Dr. {session.user?.name}
+                  Dr. Emmanuel Tweve
                 </h1>
                 <Image
                   src={bell}

@@ -72,7 +72,7 @@ export default function Home() {
             {/* Content Section */}
             <div className="w-full lg:basis-1/2 mt-12 sm:mt-16 md:mt-24 lg:mt-0">
               <h1 className="font-extrabold text-customText text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 md:mb-10">
-                Expertly interpreting your patients' heartbeats
+                Expertly interpreting your patients&apos; heartbeats
               </h1>
 
               <p className="text-[#2C3D68BD] text-lg sm:text-xl md:text-2xl mb-8 md:mb-12">
